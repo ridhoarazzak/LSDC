@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSDC - Lubuk Gadang Spatial Data Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .map-container { height: 80vh; width: 100%; border: none; }
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <nav class="fixed w-full z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-extrabold text-blue-700 tracking-tighter">LSDC</span>
+                    <span class="ml-2 text-sm font-semibold text-slate-500 hidden sm:block">Lubuk Gadang Spatial Data Center</span>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#dashboard" class="text-slate-600 hover:text-blue-600 font-medium">Dashboard</a>
+                    <a href="#about" class="text-slate-600 hover:text-blue-600 font-medium">Tentang</a>
+                    <a href="https://github.com/USERNAME_GITHUB_ANDA" target="_blank" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition">Gabung Komunitas</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-12 px-4 text-center bg-white">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4">
+            Satu Data Presisi<br>Untuk <span class="text-blue-600">Masa Depan Nagari</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+            Pusat data spasial independen berbasis satelit untuk mitigasi bencana, pemetaan potensi ekonomi, dan perencanaan desa cerdas.
+        </p>
+        <div class="flex justify-center gap-4">
+            <a href="#dashboard" class="bg-slate-900 text-white px-6 py-3 rounded-full font-bold hover:bg-slate-800 transition">Lihat Peta Live 🛰️</a>
+        </div>
+    </section>
+
+    <section id="dashboard" class="py-10 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                <div class="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                    <h3 class="font-bold text-slate-700">📡 Live Dashboard: Analisis Terpadu</h3>
+                    <span class="text-xs font-mono text-green-600 bg-green-100 px-2 py-1 rounded">● Online System</span>
+                </div>
+                
+                <iframe 
+                    src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/dashboard-nagari-lubuk-gadang-baru" 
+                    class="map-container"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100">
+                <div class="text-4xl mb-4">⛈️</div>
+                <h3 class="text-xl font-bold mb-2">Mitigasi Bencana</h3>
+                <p class="text-slate-600 text-sm">Pemetaan zona merah banjir dan longsor dengan akurasi 10 meter untuk keselamatan warga.</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100">
+                <div class="text-4xl mb-4">☕</div>
+                <h3 class="text-xl font-bold mb-2">Potensi Ekonomi</h3>
+                <p class="text-slate-600 text-sm">Analisis lahan Kopi Arabika dan komoditas unggulan untuk BUMNag dan investor.</p>
+            </div>
+            <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition border border-slate-100">
+                <div class="text-4xl mb-4">🤝</div>
+                <h3 class="text-xl font-bold mb-2">Komunitas Terbuka</h3>
+                <p class="text-slate-600 text-sm">Platform belajar terbuka bagi pemuda Solok Selatan yang ingin menguasai Remote Sensing.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800">
+        <p>© 2026 LSDC - Lubuk Gadang Spatial Data Center.</p>
+        <p class="text-sm mt-2">Dibangun dengan ❤️ & Google Earth Engine.</p>
+    </footer>
+
+</body>
+</html>
