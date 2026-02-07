@@ -6,15 +6,14 @@
     <meta name="description" content="Portal data spasial terpadu Kabupaten Solok Selatan. Command Center RPJMD 2026, kemiskinan, wisata, pasar, dan analisis lingkungan berbasis satelit.">
     <title>SSDI - Solok Selatan Spatial Data Initiative</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .map-container { width: 100%; border: none; }
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
         
-        /* Hide scrollbar */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Utility agar judul section tidak tertutup navbar saat diklik */
+        section { scroll-margin-top: 6rem; }
 
         @media (max-width: 640px) {
             .map-container { height: 50vh; } 
@@ -24,12 +23,12 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
+<body class="bg-slate-50 text-slate-800 antialiased">
 
-    <nav class="fixed w-full z-50 glass border-b border-slate-200 shadow-sm transition-all duration-300">
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="flex items-center gap-2">
                     <div class="bg-blue-700 text-white p-1 rounded font-extrabold text-xl tracking-tighter">SSDI</div>
                     <div class="flex flex-col leading-tight">
                         <span class="text-sm font-bold text-slate-900">Solok Selatan</span>
@@ -37,7 +36,7 @@
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-1 md:space-x-3 overflow-x-auto no-scrollbar pl-2">
+                <div class="flex items-center space-x-1 md:space-x-3 overflow-x-auto no-scrollbar">
                     <a href="#rpjmd" class="hidden md:block text-blue-700 font-bold text-sm hover:bg-blue-50 px-2 py-1 rounded transition">🏛️ RPJMD</a>
                     
                     <a href="#terpadu" class="hidden md:block text-slate-600 hover:text-blue-700 font-medium text-sm transition">Terpadu</a>
@@ -45,7 +44,7 @@
                     <a href="#wisata" class="hidden md:block text-slate-600 hover:text-pink-600 font-medium text-sm transition">Wisata</a>
                     <a href="#strategis" class="hidden md:block text-slate-600 hover:text-teal-600 font-medium text-sm transition">Strategis</a>
                     
-                    <a href="#riset" class="hidden md:block text-slate-900 hover:text-blue-700 font-bold text-sm transition border-b-2 border-transparent hover:border-blue-700">🔬 Riset</a>
+                    <a href="#riset" class="hidden md:block text-slate-900 font-bold hover:text-purple-600 text-sm transition border-b-2 border-transparent hover:border-purple-600">🔬 Riset</a>
                     
                     <a href="https://www.instagram.com/ssdi2026?igsh=MTJjNGJ6NjQ0dDhqZw==" target="_blank" class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-lg text-xs md:text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/20 ml-2">
                         <span>Kontak</span>
@@ -69,7 +68,7 @@
                 <a href="#rpjmd" class="px-4 py-2 bg-blue-600 text-white rounded-full text-xs font-bold shadow-lg shadow-blue-500/30 ring-2 ring-offset-2 ring-blue-600">🏛️ RPJMD</a>
                 <a href="#terpadu" class="px-4 py-2 bg-white border border-slate-200 rounded-full text-xs font-semibold shadow-sm">🗺️ Peta</a>
                 <a href="#kemiskinan" class="px-4 py-2 bg-white border border-slate-200 rounded-full text-xs font-semibold shadow-sm">📉 Miskin</a>
-                <a href="#riset" class="px-4 py-2 bg-slate-800 text-white border border-slate-800 rounded-full text-xs font-semibold shadow-sm">🔬 Riset</a>
+                <a href="#riset" class="px-4 py-2 bg-purple-600 text-white border border-purple-600 rounded-full text-xs font-semibold shadow-sm">🔬 Riset</a>
             </div>
         </div>
     </section>
@@ -295,10 +294,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center mb-16">
-                <div class="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase mb-4 border border-indigo-100">
+                <div class="inline-block bg-purple-50 text-purple-700 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase mb-4 border border-purple-100">
                     SSDI Knowledge Hub
                 </div>
                 <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">
                     Publikasi Riset & Teknologi
                 </h2>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-s
+                <p class="mt-4 max-w-3xl mx-auto text-lg text-slate-600">
+                    Dokumentasi ilmiah dan pengembangan <i>tools</i> spasial untuk mendukung kebijakan berbasis bukti (Evidence-Based Policy) di Kabupaten Solok Selatan.
+                </p>
+      
