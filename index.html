@@ -4,45 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portal data spasial terpadu Kabupaten Solok Selatan. Command Center RPJMD 2026, kemiskinan, wisata, pasar, dan analisis lingkungan berbasis satelit.">
-    <title>SSDI - South Solok Spatial Data Initiative</title>
+    <title>SSDI - Solok Selatan Spatial Data Initiative</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         .map-container { width: 100%; border: none; }
-        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+        .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         @media (max-width: 640px) {
-            .map-container { height: 55vh; } 
+            .map-container { height: 50vh; } 
         }
         @media (min-width: 641px) {
             .map-container { height: 85vh; }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass border-b border-slate-200 shadow-sm">
+    <nav class="fixed w-full z-50 glass border-b border-slate-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
                     <div class="bg-blue-700 text-white p-1 rounded font-extrabold text-xl tracking-tighter">SSDI</div>
                     <div class="flex flex-col leading-tight">
-                        <span class="text-sm font-bold text-slate-900">South Solok</span>
+                        <span class="text-sm font-bold text-slate-900">Solok Selatan</span>
                         <span class="text-[10px] font-medium text-slate-500 uppercase tracking-wider">Spatial Data Initiative</span>
                     </div>
                 </div>
                 
-                <div class="flex items-center space-x-1 md:space-x-4 overflow-x-auto no-scrollbar">
+                <div class="flex items-center space-x-1 md:space-x-3 overflow-x-auto no-scrollbar pl-2">
                     <a href="#rpjmd" class="hidden md:block text-blue-700 font-bold text-sm hover:bg-blue-50 px-2 py-1 rounded transition">🏛️ RPJMD</a>
-                    <a href="#publikasi" class="text-slate-600 hover:text-blue-700 font-bold text-sm transition px-2">📚 PUBLIKASI</a>
-                    <a href="#terpadu" class="hidden lg:block text-slate-600 hover:text-blue-700 font-medium text-sm transition">Terpadu</a>
-                    <a href="#kemiskinan" class="hidden lg:block text-slate-600 hover:text-indigo-600 font-medium text-sm transition">Kemiskinan</a>
-                    <a href="#karbon" class="hidden lg:block text-slate-600 hover:text-teal-600 font-medium text-sm transition">Karbon</a>
+                    
+                    <a href="#terpadu" class="hidden md:block text-slate-600 hover:text-blue-700 font-medium text-sm transition">Terpadu</a>
+                    <a href="#kemiskinan" class="hidden md:block text-slate-600 hover:text-indigo-600 font-medium text-sm transition">Kemiskinan</a>
+                    <a href="#wisata" class="hidden md:block text-slate-600 hover:text-pink-600 font-medium text-sm transition">Wisata</a>
+                    <a href="#strategis" class="hidden md:block text-slate-600 hover:text-teal-600 font-medium text-sm transition">Strategis</a>
+                    
+                    <a href="#riset" class="hidden md:block text-slate-900 hover:text-blue-700 font-bold text-sm transition border-b-2 border-transparent hover:border-blue-700">🔬 Riset</a>
                     
                     <a href="https://www.instagram.com/ssdi2026?igsh=MTJjNGJ6NjQ0dDhqZw==" target="_blank" class="flex items-center gap-2 bg-blue-600 text-white px-3 py-2 rounded-lg text-xs md:text-sm font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-500/20 ml-2">
                         <span>Kontak</span>
@@ -52,77 +55,25 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-12 px-4 text-center bg-gradient-to-b from-white to-slate-50">
+    <section class="pt-32 pb-10 px-4 text-center bg-gradient-to-b from-white to-slate-50">
         <div class="max-w-5xl mx-auto">
-            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide mb-4 border border-blue-100">BETA VERSION 2.0</span>
+            <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 text-xs font-bold tracking-wide mb-4 border border-blue-100">BETA VERSION 1.8</span>
             <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
-                Demokratisasi Data Spasial<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Kabupaten Solok Selatan</span>
+                Sistem Pemantauan Spasial<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Kabupaten Solok Selatan</span>
             </h1>
             <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8">
-                Pusat data terintegrasi untuk perencanaan wilayah, pengentasan kemiskinan, dan perlindungan habitat Harimau Sumatera.
+                Pusat data terintegrasi untuk perencanaan RPJMD 2026, pengentasan kemiskinan, infrastruktur ekonomi, dan keberlanjutan lingkungan.
             </p>
             
-            <div class="flex flex-wrap justify-center gap-3 md:hidden">
-                <a href="#publikasi" class="px-4 py-2 bg-indigo-600 text-white rounded-full text-xs font-bold shadow-md">📚 Riset</a>
-                <a href="#rpjmd" class="px-4 py-2 bg-blue-600 text-white rounded-full text-xs font-bold shadow-md">🏛️ RPJMD</a>
+            <div class="flex flex-wrap justify-center gap-2 md:hidden">
+                <a href="#rpjmd" class="px-4 py-2 bg-blue-600 text-white rounded-full text-xs font-bold shadow-lg shadow-blue-500/30 ring-2 ring-offset-2 ring-blue-600">🏛️ RPJMD</a>
                 <a href="#terpadu" class="px-4 py-2 bg-white border border-slate-200 rounded-full text-xs font-semibold shadow-sm">🗺️ Peta</a>
+                <a href="#kemiskinan" class="px-4 py-2 bg-white border border-slate-200 rounded-full text-xs font-semibold shadow-sm">📉 Miskin</a>
+                <a href="#riset" class="px-4 py-2 bg-slate-800 text-white border border-slate-800 rounded-full text-xs font-semibold shadow-sm">🔬 Riset</a>
             </div>
         </div>
     </section>
 
-    <!-- NEW SECTION: PUBLICATIONS -->
-    <section id="publikasi" class="py-16 bg-slate-100">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="mb-10 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-900">Publikasi Riset Internasional</h2>
-                <p class="mt-4 text-slate-600">Dokumen teknis dan hasil analisis yang telah diarsipkan secara global dengan DOI (Digital Object Identifier).</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Publication 1 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                    <div class="text-indigo-600 mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.937 7.937 0 0111 4c1.682 0 3.219.512 4.5 1.392V17.021c-1.281-.88-2.818-1.392-4.5-1.392-1.018 0-1.986.185-2.879.522A7.995 7.995 0 019 4.804zM8 4.804A7.937 7.937 0 006 4c-1.682 0-3.219.512-4.5 1.392V17.021c1.281-.88 2.818-1.392 4.5-1.392.546 0 1.074.067 1.579.196V4.804z"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Pemodelan Prediksi Kemiskinan</h3>
-                    <p class="text-sm text-slate-600 mb-4">Analisis prediktif tingkat kemiskinan per-kecamatan berbasis spasial dengan akurasi R² 0.984.</p>
-                    <a href="https://doi.org/10.5281/zenodo.18511081" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:underline">
-                        Lihat di Zenodo (DOI) 
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
-
-                <!-- Publication 2 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                    <div class="text-teal-600 mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clip-rule="evenodd"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Monitoring Penurunan Tanah</h3>
-                    <p class="text-sm text-slate-600 mb-4">Deteksi cepat penurunan muka tanah (subsidence) di area Geothermal Supreme Energy Muara Labuh.</p>
-                    <a href="https://doi.org/10.5281/zenodo.18235210" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:underline">
-                        Lihat di Zenodo (DOI)
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
-
-                <!-- Publication 3 -->
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 card-hover">
-                    <div class="text-blue-600 mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path></svg>
-                    </div>
-                    <h3 class="font-bold text-lg mb-2 text-slate-900">Digitalisasi Tata Kelola Desa</h3>
-                    <p class="text-sm text-slate-600 mb-4">Pengembangan sistem pendukung keputusan (DSS) berbasis Cloud untuk Nagari di wilayah penyangga.</p>
-                    <a href="https://doi.org/10.5281/zenodo.18220424" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:underline">
-                        Lihat di Zenodo (DOI)
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RPJMD Section -->
     <section id="rpjmd" class="py-10">
         <div class="max-w-7xl mx-auto px-2 md:px-4">
             <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-blue-100 ring-4 ring-blue-50/50">
@@ -135,14 +86,18 @@
                         <h3 class="font-extrabold text-2xl text-slate-900">Command Center RPJMD 2026</h3>
                         <p class="text-sm text-slate-600">Integrasi Data Perencanaan Pembangunan Jangka Menengah Daerah</p>
                     </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold text-white bg-slate-900 shadow-lg">
+                            Solok Selatan Maju
+                        </span>
+                    </div>
                 </div>
                 <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/dashboard-solok-selatan-2026" class="map-container" allowfullscreen loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <!-- Terpadu Section -->
-    <section id="terpadu" class="py-12 bg-white">
+    <section id="terpadu" class="py-12 bg-slate-50/50">
         <div class="max-w-7xl mx-auto px-2 md:px-4">
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
                 <div class="p-4 md:p-5 border-b border-slate-100 flex justify-between items-center bg-white">
@@ -150,43 +105,200 @@
                         <h3 class="font-bold text-lg text-slate-800">Peta Risiko & Potensi Wilayah</h3>
                         <p class="text-sm text-slate-500">Dashboard Terintegrasi Nagari Lubuk Gadang</p>
                     </div>
-                    <span class="text-xs font-mono text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-100">Live GEE App</span>
+                    <span class="hidden md:inline-flex items-center gap-1.5 text-xs font-mono text-blue-700 bg-blue-50 px-2.5 py-1 rounded border border-blue-100">
+                        Live Data
+                    </span>
                 </div>
                 <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/dashboardnagarilubukgadangok" class="map-container" allowfullscreen loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <!-- Additional Dashboards -->
-    <!-- [Keep other sections: Padi, Bantuan, Kemiskinan, LULC, etc. as they are] -->
-    
-    <section id="kemiskinan" class="py-12 bg-slate-50">
+    <section id="padi" class="py-12">
         <div class="max-w-7xl mx-auto px-2 md:px-4">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
-                <div class="p-4 md:p-5 border-b border-slate-100">
-                    <h3 class="font-bold text-lg text-slate-800">📉 Prediksi Kemiskinan 2020-2024</h3>
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🌾 Monitoring Fase Tanam Padi</h3>
+                        <p class="text-sm text-slate-500">Deteksi Backscatter Radar (Sentinel-1)</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">Ketahanan Pangan</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/monitoring-padi-lubuk-gadang" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="bantuan" class="py-12 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">📦 Prioritas Bantuan Pangan</h3>
+                        <p class="text-sm text-slate-500">Analisis Spasial Target Penerima Manfaat</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-rose-700 bg-rose-50 px-3 py-1 rounded-full border border-rose-100">Sosial Kemanusiaan</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/bantuanpangan" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="kemiskinan" class="py-12">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">📉 Monitoring & Prediksi Kemiskinan</h3>
+                        <p class="text-sm text-slate-500">Model Regresi Linier 2020-2024</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="flex flex-col items-end md:items-center px-3 py-1 bg-white rounded border border-slate-200 shadow-sm">
+                            <span class="text-[10px] uppercase text-slate-400 font-bold tracking-wider">Akurasi (R²)</span>
+                            <span class="text-sm font-bold text-indigo-600">0.981</span>
+                        </div>
+                        <div class="flex flex-col items-end md:items-center px-3 py-1 bg-white rounded border border-slate-200 shadow-sm">
+                            <span class="text-[10px] uppercase text-slate-400 font-bold tracking-wider">Error (MAE)</span>
+                            <span class="text-sm font-bold text-rose-600">69.50</span>
+                        </div>
+                    </div>
                 </div>
                 <iframe src="https://mrgridhoarazzak.users.earthengine.app/view/monitoringdanprediksikemiskinan20-23" class="map-container" allowfullscreen loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-16 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <div class="mb-6">
-                <span class="text-2xl font-extrabold text-white tracking-tighter">SSDI</span>
+    <section id="lulc" class="py-12 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🗺️ Land Use Land Cover (LULC)</h3>
+                        <p class="text-sm text-slate-500">Klasifikasi Tutupan Lahan Machine Learning</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-orange-700 bg-orange-50 px-3 py-1 rounded-full border border-orange-100">Tata Ruang</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/dashboardlulclbgadang" class="map-container" allowfullscreen loading="lazy"></iframe>
             </div>
-            <p class="text-sm text-slate-500 mb-8 max-w-md mx-auto">
-                South Solok Spatial Data Initiative (SSDI) adalah inisiatif independen untuk kedaulatan data dan transparansi lingkungan di Sumatera Barat.
-            </p>
-            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold uppercase tracking-widest text-slate-500">
-                <a href="#publikasi" class="hover:text-white">Publikasi</a>
-                <a href="#rpjmd" class="hover:text-white">RPJMD</a>
-                <a href="#terpadu" class="hover:text-white">Risiko</a>
-                <a href="#kemiskinan" class="hover:text-white">Kemiskinan</a>
-            </div>
-            <p class="mt-10 text-[10px] text-slate-600">&copy; 2026 Ridho Arazzak - SSDI. Powered by Google Earth Engine & Vercel.</p>
         </div>
-    </footer>
-</body>
-    </html>
+    </section>
+
+    <section id="wisata" class="py-12">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🏖️ Zona Potensi Wisata & Lahan</h3>
+                        <p class="text-sm text-slate-500">Analisis MapBiomas: Hutan Alam, Agrowisata, & Area Industri</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-pink-700 bg-pink-50 px-3 py-1 rounded-full border border-pink-100">Ekonomi Kreatif</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/zona-potensi-wisata" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="psm" class="py-12 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🏪 SIPANTRA - PSM</h3>
+                        <p class="text-sm text-slate-500">Sistem Pantau Citra Pasar Muara Labuh & Aktivitas Ekonomi</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-100">Pusat Perdagangan</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/dashboard-psm" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="karbon" class="py-12">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🌿 Estimasi Stok Karbon</h3>
+                        <p class="text-sm text-slate-500">Analisis Biomassa Atas Permukaan (AGB)</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-sky-700 bg-sky-50 px-3 py-1 rounded-full border border-sky-100">Lingkungan Hidup</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/karbon-lubuk-gadang" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="geothermal" class="py-12 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🌋 Analisis Geothermal Supreme Energy</h3>
+                        <p class="text-sm text-slate-500">Monitoring Deformasi & Perubahan Lahan (InSAR)</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">Energi Terbarukan</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/analisa-perubahan-lahan" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="sdgs" class="py-12">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">🎯 Pencapaian SDGs Solok Selatan</h3>
+                        <p class="text-sm text-slate-500">Monitoring Indikator Pembangunan Berkelanjutan</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-yellow-700 bg-yellow-50 px-3 py-1 rounded-full border border-yellow-100">Global Goals</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/sdgs2-solok-selatan" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="strategis" class="py-12 bg-slate-50/50">
+        <div class="max-w-7xl mx-auto px-2 md:px-4">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 ring-1 ring-slate-900/5">
+                <div class="p-4 md:p-5 border-b border-slate-100 flex flex-col md:flex-row md:justify-between md:items-center">
+                    <div>
+                        <h3 class="font-bold text-lg text-slate-800">💼 Dashboard Strategis & CSR</h3>
+                        <p class="text-sm text-slate-500">Analisis untuk Mendukung Keberlanjutan Operasional</p>
+                    </div>
+                    <div class="mt-2 md:mt-0">
+                        <span class="text-xs font-semibold text-teal-700 bg-teal-50 px-3 py-1 rounded-full border border-teal-100">Keberlanjutan</span>
+                    </div>
+                </div>
+                <iframe src="https://ee-mrgridhoarazzak.projects.earthengine.app/view/supreme" class="map-container" allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="riset" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <div class="inline-block bg-indigo-50 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase mb-4 border border-indigo-100">
+                    SSDI Knowledge Hub
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900">
+                    Publikasi Riset & Teknologi
+                </h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-s
